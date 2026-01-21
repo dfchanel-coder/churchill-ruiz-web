@@ -48,14 +48,14 @@ a {
 }
 
 /* ===========================
-   NAVBAR
+   NAVBAR & BURGER MENU
    =========================== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -70,6 +70,7 @@ a {
 .nav-links {
     display: flex;
     list-style: none;
+    align-items: center;
 }
 
 .nav-links li {
@@ -87,6 +88,20 @@ a {
     color: black;
 }
 
+/* Estilos del icono Hamburguesa */
+.burger {
+    display: none; /* Oculto en PC */
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: 0.3s;
+}
+
 /* ===========================
    HERO SECTION (SLIDER ANIMADO)
    =========================== */
@@ -98,39 +113,28 @@ a {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    /* Fondo negro de base por si tardan en cargar las fotos */
     background-color: #000; 
 }
 
-/* Contenedor del Slider */
 .hero-slider {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0;
 }
 
-/* Diapositivas Individuales */
 .slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
     opacity: 0;
     animation: crossfade 15s infinite;
 }
 
-/* Tiempos de animación para 3 fotos (5s cada una) */
 .slide:nth-child(1) { animation-delay: 0s; }
 .slide:nth-child(2) { animation-delay: 5s; }
 .slide:nth-child(3) { animation-delay: 10s; }
 
-/* Animación Keyframes */
 @keyframes crossfade {
     0% { opacity: 0; transform: scale(1); }
     5% { opacity: 1; } 
@@ -139,7 +143,6 @@ a {
     100% { opacity: 0; } 
 }
 
-/* Capa oscura sobre las fotos */
 .hero-overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -147,7 +150,6 @@ a {
     z-index: 1;
 }
 
-/* Texto del Hero */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -165,7 +167,6 @@ a {
     color: #ccc;
 }
 
-/* Botones Principales */
 .cta-group {
     display: flex;
     gap: 15px;
@@ -217,7 +218,7 @@ section {
 }
 
 .section-light {
-    background: #141414; /* Gris oscuro para contraste */
+    background: #141414;
 }
 
 /* ===========================
@@ -250,7 +251,7 @@ section {
 }
 
 /* ===========================
-   GALERÍA (MONTAJES)
+   GALERÍA
    =========================== */
 .gallery-grid {
     display: grid;
@@ -271,7 +272,7 @@ section {
     opacity: 0.8;
 }
 
-/* --- ¡ATENCIÓN! REEMPLAZA ESTAS RUTAS CON TUS FOTOS --- */
+/* RUTAS FOTOS */
 .item1 { background-image: url('foto-luces.jpg'); grid-row: span 2; }
 .item2 { background-image: url('foto-pista.jpg'); }
 .item3 { background-image: url('foto-equipos.jpg'); }
@@ -293,9 +294,10 @@ section {
     background: #1a1a1a;
     border-radius: 12px;
     overflow: hidden;
+    min-height: 400px; /* Altura mínima mientras carga */
 }
 
-/* Ajuste forzado para iframes de Instagram */
+/* Forzar iframes de instagram al ancho correcto */
 .instagram-embed-container iframe {
     width: 100% !important;
     max-width: 100% !important;
@@ -303,8 +305,32 @@ section {
 }
 
 /* ===========================
-   CONTACTO
+   TESTIMONIOS
    =========================== */
+.testimonials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    background: #1a1a1a;
+    padding: 20px;
+    border-left: 4px solid #00d4ff;
+    max-width: 400px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.testimonial-card p { font-style: italic; color: #ddd; margin-bottom: 10px; }
+.testimonial-card h4 { color: #00d4ff; font-weight: bold; }
+
+/* ===========================
+   CONTACTO & FOOTER
+   =========================== */
+.section-cta { text-align: center; }
+
 .btn-whatsapp-big {
     display: inline-flex;
     align-items: center;
@@ -346,13 +372,62 @@ footer {
 }
 
 /* ===========================
+   WHATSAPP FLOTANTE
+   =========================== */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebd59;
+    transform: scale(1.1);
+}
+
+/* ===========================
    RESPONSIVE (MÓVIL)
    =========================== */
 @media (max-width: 768px) {
     .hero-content h1 { font-size: 2.5rem; }
     
-    .nav-links { display: none; } /* Ocultamos menú en móvil por ahora */
+    /* Configuración del Menú Desplegable */
+    .burger { display: block; }
     
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh; /* Altura restando el navbar */
+        top: 8vh;
+        background-color: #0a0a0a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 60%;
+        transform: translateX(100%); /* Oculto a la derecha */
+        transition: transform 0.4s ease-in-out;
+        border-left: 1px solid #333;
+    }
+
+    /* Clase que agrega JS para mostrar menú */
+    .nav-active {
+        transform: translateX(0%);
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr;
         height: auto;
@@ -360,7 +435,7 @@ footer {
     
     .gallery-item {
         height: 250px;
-        grid-column: span 1 !important; /* Desactivar spans en móvil */
+        grid-column: span 1 !important;
         grid-row: span 1 !important;
     }
     
