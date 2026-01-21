@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>DJ CHURCHILL RUIZ | Eventos & Producción</title>
+    <meta name="description" content="Servicio de DJ, Sonido Profesional, Iluminación y Pantallas LED para fiestas y eventos en Rivera, Uruguay. Alquiler de equipamiento de alta gama.">
+    <meta name="keywords" content="DJ Rivera, Sonido, Iluminación, Fiestas, Eventos Uruguay, Pantallas LED, Churchill Ruiz">
+    <meta name="author" content="FB Informática">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+    
+    </head>
 <body>
 
     <nav class="navbar">
@@ -84,17 +92,17 @@
         
         <div class="carousel-container reveal">
             <div class="carousel-track">
-                <div class="carousel-slide"><img src="carrousel1.jpg" alt="Montaje DJ"></div>
-                <div class="carousel-slide"><img src="carrousel2.jpg" alt="Iluminación Eventos"></div>
-                <div class="carousel-slide"><img src="carrousel3.jpg" alt="Pantallas LED"></div>
-                <div class="carousel-slide"><img src="carrousel4.jpg" alt="Fiesta DJ"></div>
-                <div class="carousel-slide"><img src="carrousel5.jpg" alt="Sonido Profesional"></div>
+                <div class="carousel-slide"><img src="carrousel1.jpg" alt="Montaje DJ" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel2.jpg" alt="Iluminación" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel3.jpg" alt="Pantallas LED" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel4.jpg" alt="Fiesta" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel5.jpg" alt="Sonido" loading="lazy"></div>
 
-                <div class="carousel-slide"><img src="carrousel1.jpg" alt="Montaje DJ"></div>
-                <div class="carousel-slide"><img src="carrousel2.jpg" alt="Iluminación Eventos"></div>
-                <div class="carousel-slide"><img src="carrousel3.jpg" alt="Pantallas LED"></div>
-                <div class="carousel-slide"><img src="carrousel4.jpg" alt="Fiesta DJ"></div>
-                <div class="carousel-slide"><img src="carrousel5.jpg" alt="Sonido Profesional"></div>
+                <div class="carousel-slide"><img src="carrousel1.jpg" alt="Montaje DJ" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel2.jpg" alt="Iluminación" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel3.jpg" alt="Pantallas LED" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel4.jpg" alt="Fiesta" loading="lazy"></div>
+                <div class="carousel-slide"><img src="carrousel5.jpg" alt="Sonido" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -104,12 +112,15 @@
             <h2>EN ACCIÓN</h2>
             <p class="section-subtitle">Mira la energía de nuestros eventos en vivo.</p>
             <div class="reels-grid">
-                <div class="instagram-embed-container">
-                    <p style="color:#666; padding:20px;">(Pega aquí el código del Reel 1)</p>
-                </div>
+                
                  <div class="instagram-embed-container">
-                    <p style="color:#666; padding:20px;">(Pega aquí el código del Reel 2)</p>
+                    <p style="color:#666; padding:20px;">(Pega aquí el código Embed de Instagram)</p>
                 </div>
+
+                 <div class="instagram-embed-container">
+                    <p style="color:#666; padding:20px;">(Pega aquí el código Embed de Instagram)</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -146,19 +157,23 @@
         </div>
     </section>
 
-    <a href="https://wa.me/59894242767" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/59894242767" class="whatsapp-float" target="_blank" title="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <a href="#" class="to-top" id="toTopBtn" title="Volver al inicio">
+        <i class="fas fa-chevron-up"></i>
     </a>
 
     <footer>
         <p>
-            &copy; 2026 CHURCHILL RUIZ EVENTOS. Designed by 
+            &copy; <span id="year"></span> CHURCHILL RUIZ EVENTOS. Designed by 
             <a href="https://instagram.com/fbinformaticauy" target="_blank" style="color: #00d4ff; font-weight:bold;">FB Informática</a>.
         </p>
     </footer>
 
     <script>
-        // Menú Móvil
+        // 1. Menú Móvil
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
             const burger = document.querySelector('.burger');
@@ -166,7 +181,7 @@
             burger.classList.toggle('toggle');
         }
 
-        // Animación de aparición al hacer scroll
+        // 2. Animación de Scroll (Reveal)
         window.addEventListener('scroll', reveal);
         function reveal() {
             var reveals = document.querySelectorAll('.reveal');
@@ -179,8 +194,20 @@
                 }
             }
         }
-        // Disparar una vez al cargar por si ya estamos abajo
-        reveal();
+        reveal(); // Ejecutar al inicio
+
+        // 3. Botón Volver Arriba (Aparece/Desaparece)
+        const toTopBtn = document.getElementById("toTopBtn");
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                toTopBtn.classList.add("active");
+            } else {
+                toTopBtn.classList.remove("active");
+            }
+        });
+
+        // 4. Año Automático en Footer
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
 </body>
